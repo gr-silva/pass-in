@@ -17,3 +17,7 @@ Content-Type: application/json
   "name": "Gabriel Rocha",
   "email": "gabriel2@t2tsolucoes.com"
 }
+
+###
+
+GET http://localhost:3333/events/da36482f-3cf4-42da-adfa-81606d814011
