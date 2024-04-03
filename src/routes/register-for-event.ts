@@ -26,6 +26,40 @@ export async function registerForEvent(app: FastifyInstance) {
       const { eventId } = request.params;
       const { name, email } = request.body;
 
+      const attendeeFromEmail = await prisma.attendee.findUnique({
+        where: {
+          eventId_email: {
+            email,
+            eventId,
+          },
+        },
+      });
+
+      if (attendeeFromEmail !== null) {
+        throw new Error("This e-mail is already registered for this event.");
+      }
+
+      const event = await prisma.event.findUnique({
+        where: {
+          id: eventId,
+        },
+      });
+
+      const amountOfAttendeesForEvent = await prisma.attendee.count({
+        where: {
+          eventId,
+        },
+      });
+
+      if (
+        event?.maximumAttendees &&
+        amountOfAttendeesForEvent >= event?.maximumAttendees
+      ) {
+        throw new Error(
+          "The maximum number of attendees for this event has bene reached."
+        );
+      }
+
       const attendee = await prisma.attendee.create({
         data: {
           name,

@@ -3,17 +3,17 @@ Content-Type: application/json
 
 
 {
- "title": "Unite Summit",
- "details": "Um evento para quem é apaixonado por programação",
- "maximumAttendees": 100
+ "title": "Evento teste",
+ "details": null,
+ "maximumAttendees": 1
 }
 
 ###
 
-POST http://localhost:3333/events/766d0e92-2eee-4aab-839d-1ed37fbd783f/attendees
+POST http://localhost:3333/events/860f94a0-1893-4e4c-a042-f911fecbe70b/attendees
 Content-Type: application/json
 
 {
   "name": "Gabriel Rocha",
-  "email": "gabriel@t2tsolucoes.com"
+  "email": "gabriel2@t2tsolucoes.com"
 }
