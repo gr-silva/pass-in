@@ -1,6 +1,7 @@
 import fastify from "fastify";
 import { z } from "zod";
 import { PrismaClient } from "@prisma/client";
+import { generateSlug } from "./utils/generate-slug";
 
 const app = fastify();
 const prisma = new PrismaClient({
@@ -22,6 +23,11 @@ const prisma = new PrismaClient({
 
 // JSON - JavaScript Object Notation
 
+// 20x => Sucesso
+// 30x => Redirecionamento
+// 40x => Erro do cliente (Erro em alguma informação enviada por QUEM está fazendo chamada  p/ API)
+// 50x => Erro do servidor (Um erro que está acontecendo INDEPENDENTE do que está sendo enviado p/ o servidor)
+
 app.post("/events", async (request, reply) => {
   const createEventSchema = z.object({
     title: z.string().min(4),
@@ -29,14 +35,28 @@ app.post("/events", async (request, reply) => {
     maximumAttendees: z.number().int().positive().nullable(),
   });
 
-  const data = createEventSchema.parse(request.body);
+  const { title, details, maximumAttendees } = createEventSchema.parse(
+    request.body
+  );
+
+  const slug = generateSlug(title);
+
+  const eventWithSlug = await prisma.event.findUnique({
+    where: {
+      slug,
+    },
+  });
+
+  if (eventWithSlug !== null) {
+    throw new Error("Another event with same title already exists");
+  }
 
   const event = await prisma.event.create({
     data: {
-      title: data.title,
-      details: data.details,
-      maximumAttendees: data.maximumAttendees,
-      slug: new Date().toISOString(),
+      title,
+      details,
+      maximumAttendees,
+      slug,
     },
   });
 
