@@ -7,3 +7,13 @@ Content-Type: application/json
  "details": "Um evento para quem é apaixonado por programação",
  "maximumAttendees": 100
 }
+
+###
+
+POST http://localhost:3333/events/766d0e92-2eee-4aab-839d-1ed37fbd783f/attendees
+Content-Type: application/json
+
+{
+  "name": "Gabriel Rocha",
+  "email": "gabriel@t2tsolucoes.com"
+}
