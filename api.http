@@ -3,14 +3,14 @@ Content-Type: application/json
 
 
 {
- "title": "Evento teste",
+ "title": "Novo evento 2",
  "details": null,
  "maximumAttendees": 1
 }
 
 ###
 
-POST http://localhost:3333/events/860f94a0-1893-4e4c-a042-f911fecbe70b/attendees
+POST http://localhost:3333/events/da36482f-3cf4-42da-adfa-81606d814011/attendees
 Content-Type: application/json
 
 {
