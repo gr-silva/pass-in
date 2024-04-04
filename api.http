@@ -3,14 +3,14 @@ Content-Type: application/json
 
 
 {
- "title": "Novo evento 2",
+ "title": 12312,
  "details": null,
  "maximumAttendees": 1
 }
 
 ###
 
-POST http://localhost:3333/events/da36482f-3cf4-42da-adfa-81606d814011/attendees
+POST http://localhost:3333/events/39d2984d-275b-44af-90e1-8ed74016a38d/attendees
 Content-Type: application/json
 
 {
@@ -20,16 +20,16 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3333/events/da36482f-3cf4-42da-adfa-81606d814011
+GET http://localhost:3333/events/39d2984d-275b-44af-90e1-8ed74016a38d
 
 ###
 
-GET http://localhost:3333/attendees/4/badge
+GET http://localhost:3333/attendees/1/badge
 
 ###
 
-GET http://localhost:3333/attendees/5/check-in
+GET http://localhost:3333/attendees/1/check-in
 
 ###
 
-GET http://localhost:3333/events/da36482f-3cf4-42da-adfa-81606d814011/attendees?query=gabriel
+GET http://localhost:3333/events/39d2984d-275b-44af-90e1-8ed74016a38d/attendees?query=gabriel
