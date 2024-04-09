@@ -53,6 +53,6 @@ app.register(getEventAttendees);
 
 app.setErrorHandler(errorHandler);
 
-app.listen({ port: 3333, host: "0.0.0.0" }).then(() => {
+app.listen({ port: 3000, host: "0.0.0.0" }).then(() => {
   console.log("HTTP server running!");
 });
