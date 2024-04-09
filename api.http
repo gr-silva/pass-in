@@ -3,33 +3,33 @@ Content-Type: application/json
 
 
 {
- "title": 12312,
- "details": null,
- "maximumAttendees": 1
+ "title": "Teste Novo Evento",
+ "details": "Esse é um teste de novo evento.",
+ "maximumAttendees": 15
 }
 
 ###
 
-POST http://localhost:3333/events/39d2984d-275b-44af-90e1-8ed74016a38d/attendees
+POST http://localhost:3333/events/681b495c-0036-4e28-93e8-76e964c46d50/attendees
 Content-Type: application/json
 
 {
   "name": "Gabriel Rocha",
-  "email": "gabriel2@t2tsolucoes.com"
+  "email": "gabriel@rochasphere.com"
 }
 
 ###
 
-GET http://localhost:3333/events/39d2984d-275b-44af-90e1-8ed74016a38d
+GET http://localhost:3333/events/681b495c-0036-4e28-93e8-76e964c46d50
 
 ###
 
-GET http://localhost:3333/attendees/1/badge
+GET http://localhost:3333/attendees/2/badge
 
 ###
 
-GET http://localhost:3333/attendees/1/check-in
+GET http://localhost:3333/attendees/2/check-in
 
 ###
 
-GET http://localhost:3333/events/39d2984d-275b-44af-90e1-8ed74016a38d/attendees?query=gabriel
+GET http://localhost:3333/events/681b495c-0036-4e28-93e8-76e964c46d50/attendees
